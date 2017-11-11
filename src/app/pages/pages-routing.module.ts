@@ -1,8 +1,8 @@
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
 
-import { PagesComponent } from './pages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import {PagesComponent} from './pages.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes = [{
   path: '',
@@ -13,6 +13,9 @@ const routes: Routes = [{
   }, {
     path: 'ui-features',
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
+  }, {
+    path: 'master',
+    loadChildren: './master/master.module#MasterModule',
   }, {
     path: 'components',
     loadChildren: './components/components.module#ComponentsModule',
