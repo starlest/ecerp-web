@@ -10,4 +10,6 @@
 
 export const environment = {
   production: false,
+  authKey: 'ecerp-auth',
+  apiEndpoint: 'http://localhost:50000/',
 };
