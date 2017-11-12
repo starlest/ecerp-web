@@ -1,5 +1,5 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
-import {LoadSuccess} from '../actions/company';
+import {LoadSuccess, UpdateSuccess} from '../actions/company';
 
 import * as CompanyActions from '../actions/company';
 import {Company} from '../models/company';
@@ -32,6 +32,11 @@ export function reducer(state = initialState,
     case CompanyActions.LOAD_SUCCESS: {
       const loadSuccessAction = action as LoadSuccess;
       return adapter.addAll(loadSuccessAction.payload, {...state, loaded: true, loading: false});
+    }
+
+    case CompanyActions.UPDATE_SUCCESS: {
+      const updateSuccessAction = action as UpdateSuccess;
+      return adapter.updateOne(updateSuccessAction.payload.company, state);
     }
 
     case CompanyActions.LOAD_FAIL: {

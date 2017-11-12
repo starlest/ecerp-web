@@ -32,5 +32,5 @@ export const reducers: ActionReducerMap<State> = {
  * that will be composed to form the root meta-reducer.
  */
 export const metaReducers: MetaReducer<State>[] = !environment.production
-  ? [storeFreeze]
+  ? []
   : [];

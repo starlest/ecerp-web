@@ -1,6 +1,8 @@
 import {RouterStateSerializer} from '@ngrx/router-store';
 import {RouterStateSnapshot, Params} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
+import {RequestOptions} from '@angular/http';
+import {HttpHeaders} from '@angular/common/http';
 
 /**
  * The RouterStateSerializer takes the current RouterStateSnapshot
@@ -24,6 +26,15 @@ export class CustomRouterStateSerializer
     return {url, queryParams};
   }
 }
+
+export function getRequestOptions() {
+  return {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+}
+
 
 /**
  * Handle HTTP response error

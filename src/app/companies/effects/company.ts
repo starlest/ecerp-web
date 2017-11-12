@@ -21,6 +21,20 @@ export class CompanyEffects {
           return Observable.of(new CompanyActions.LoadFail());
         }));
 
+  @Effect()
+  updateCompany$: Observable<Action> = this.actions$
+    .ofType(CompanyActions.UPDATE)
+    .map((action: CompanyActions.Update) => action.payload)
+    .switchMap(company => {
+      return this.companyService.update(company)
+        .map((updatedCompany: Company) => {
+          return new CompanyActions.UpdateSuccess({company: {id: updatedCompany.id, changes: updatedCompany}});
+        })
+        .catch(error => {
+          return Observable.of(new CompanyActions.UpdateFail());
+        });
+    });
+
   constructor(private actions$: Actions, private companyService: CompanyService) {
   }
 }
